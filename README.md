@@ -34,7 +34,7 @@ O **Cofre de Senhas Pessoais** é uma aplicação web segura, desenvolvida como 
 
 ## 🎬 Demonstração
 
-[(https://youtu.be/Vt8ymKGg1A4)]
+https://youtu.be/Vt8ymKGg1A4
 
 ---
 
