@@ -1,61 +1,143 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🛡️ Projeto Cofre de Senhas Pessoais
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-38B2AC?style=for-the-badge&logo=tailwind-css)
 
-## About Laravel
+## 📖 Sumário
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Sobre o Projeto](#-sobre-o-projeto)
+- [Funcionalidades Principais](#-funcionalidades-principais)
+- [Demonstração em Vídeo](#-demonstração-em-vídeo)
+- [Critérios de Segurança Implementados](#-critérios-de-segurança-implementados)
+- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [Como Executar o Projeto Localmente](#-como-executar-o-projeto-localmente)
+- [Licença](#-licença)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📌 Sobre o Projeto
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+O **Cofre de Senhas Pessoais** é uma aplicação web segura, desenvolvida como um projeto acadêmico com foco na implementação de funcionalidades de software com uma forte ênfase em aspectos de **Segurança da Informação no Ambiente Lógico**. A aplicação permite que usuários armazenem e gerenciem suas credenciais de diversos serviços de forma centralizada e protegida.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## ✨ Funcionalidades Principais
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Autenticação de Usuário:** Sistema completo de registro e login.
+- **Política de Senha Forte:** Requisitos robustos para a senha de acesso à plataforma.
+- **CRUD de Credenciais:** Funcionalidades para Criar, Ler, Atualizar e Deletar as senhas armazenadas.
+- **Visualização Segura:** Botão de "mostrar/ocultar" senha para cada credencial.
+- **Perfil de Usuário:** Página para o usuário gerenciar seus dados e alterar sua senha principal.
+- **Design Responsivo:** Interface limpa e funcional, construída com Tailwind CSS.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🎬 Demonstração
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+[(https://youtu.be/Vt8ymKGg1A4)]
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Critérios de Segurança Implementados
 
-## Contributing
+Este projeto foi desenvolvido com uma mentalidade "security-first". Abaixo estão os principais controles de segurança lógica implementados:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### 1. **Controle de Acesso e Autenticação**
+   - Utilizado o ecossistema do **Laravel Breeze** para uma base de autenticação robusta.
+   - Todas as rotas sensíveis (como o cofre) são protegidas pelo middleware `auth`, garantindo que apenas usuários autenticados possam acessá-las.
 
-## Code of Conduct
+#### 2. **Hashing da Senha de Autenticação**
+   - As senhas dos usuários da plataforma **jamais** são armazenadas em texto plano. Elas são processadas com o algoritmo **Bcrypt** no momento do registro e da atualização, armazenando apenas o hash irreversível no banco de dados.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### 3. **Criptografia de Dados Sensíveis**
+   - As senhas das credenciais armazenadas no cofre são **criptografadas** no banco de dados utilizando o facade `Crypt` do Laravel, que implementa o algoritmo **AES-256-GCM**.
+   - Um **mutator** no Model `Credential` garante que os dados sejam sempre criptografados ao salvar e descriptografados apenas no momento da exibição, automatizando a segurança.
 
-## Security Vulnerabilities
+#### 4. **Política de Senha Forte**
+   - No registro e na troca de senha, é aplicada uma política rigorosa através da regra `Password` do Laravel, exigindo:
+     - Mínimo de **10 caracteres**.
+     - Presença de **letras maiúsculas e minúsculas** (`mixedCase`).
+     - Presença de **números**.
+     - Presença de **símbolos** (caracteres especiais).
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### 5. **Prevenção contra Ataques de Força Bruta**
+   - O **Login Throttling** nativo do Laravel está ativo, bloqueando tentativas de login para um usuário/IP após 5 tentativas falhas por um período de 1 minuto.
 
-## License
+#### 6. **Proteção contra Cross-Site Request Forgery (CSRF)**
+   - Todos os formulários que enviam dados (`POST`, `PUT`) são protegidos com a diretiva Blade `@csrf`, garantindo que as requisições se originem da própria aplicação.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### 7. **Validação de Entradas no Servidor**
+   - Todos os dados recebidos de formulários são rigorosamente validados no backend através do método `$request->validate()` nos controllers.
+
+#### 8. **Proteção contra SQL Injection**
+   - O uso exclusivo do **Eloquent ORM** do Laravel, que utiliza *prepared statements*, elimina a vulnerabilidade a ataques de injeção de SQL.
+
+#### 9. **Proteção contra Cross-Site Scripting (XSS)**
+   - A sintaxe de exibição padrão do Blade (`{{ }}`) escapa automaticamente todo o output, prevenindo a execução de scripts maliciosos.
+
+---
+
+## Como Executar o Projeto Localmente
+
+Para executar este projeto em seu ambiente local, siga os passos abaixo:
+
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/](https://github.com/)[SEU_USUARIO]/[SEU_REPOSITORIO].git
+    ```
+
+2.  **Navegue até a pasta do projeto:**
+    ```bash
+    cd nome-da-pasta-do-projeto
+    ```
+
+3.  **Instale as dependências do PHP:**
+    ```bash
+    composer install
+    ```
+
+4.  **Crie o arquivo de ambiente:**
+    *Copie o arquivo de exemplo `.env.example` para um novo arquivo chamado `.env`.*
+    ```bash
+    copy .env.example .env
+    ```
+
+5.  **Gere a chave da aplicação:**
+    ```bash
+    php artisan key:generate
+    ```
+
+6.  **Configure o banco de dados:**
+    *Abra o arquivo `.env` e adicione as credenciais do seu banco de dados MySQL local.*
+
+7.  **Execute as migrações:**
+    *Este comando irá criar todas as tabelas necessárias no seu banco de dados.*
+    ```bash
+    php artisan migrate
+    ```
+
+8.  **Instale as dependências do frontend:**
+    ```bash
+    npm install
+    ```
+
+9.  **Compile os assets e inicie o "vigia":**
+    *Mantenha este comando rodando em um terminal separado durante o desenvolvimento.*
+    ```bash
+    npm run dev
+    ```
+
+10. **Inicie o servidor web:**
+    *Utilize o Apache do XAMPP ou o servidor embutido do PHP.*
+    ```bash
+    php artisan serve
+    ```
+    Acesse o projeto em `http://127.0.0.1:8000`.
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
+
+---
