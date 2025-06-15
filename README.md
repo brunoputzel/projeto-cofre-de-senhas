@@ -134,10 +134,3 @@ Para executar este projeto em seu ambiente local, siga os passos abaixo:
     ```
     Acesse o projeto em `http://127.0.0.1:8000`.
 
----
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT.
-
----
